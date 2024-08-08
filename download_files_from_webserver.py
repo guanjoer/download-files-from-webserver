@@ -25,7 +25,7 @@ def download_file(url, dest_folder):
                         dl += len(chunk)
                         file.write(chunk)
                         done = int(50 * dl / total_length)
-                        print(f"\r[{('=' * done)}{' ' * (50-done)}] {dl/total_length*100:.2f}%", end='')
+                        print(f"\r[{('=' * done)}{' ' * (50-done)}] {dl/total_length*100:.2f}%", end='') # 파일 다운로드 진행 상황 표시
 
         print(f'\nDownloaded: {file_name}')
     except requests.exceptions.RequestException as e:
@@ -59,6 +59,7 @@ def download_directory(base_url, dest_folder):
 
 # 웹서버의 URL
 # ex) http://192.168.0.1:8080/
+# URL 끝에 /를 입력해야 한다. 그렇지 않을 시, 에러 발생
 base_url = 'your_webserver_url' # your_webserver_url
 # 파일이 저장될 로컬 폴더 이름
 dest_folder = 'downloaded_files'  
